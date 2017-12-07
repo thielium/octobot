@@ -112,7 +112,7 @@ fn test_submit_for_review() {
     test.jira.mock_get_transitions("CLI-9999", Ok(vec![new_transition("001", "progress1")]));
     test.jira.mock_transition_issue("CLI-9999", &new_transition_req("001"), Ok(()));
 
-    jira::workflow::submit_for_review(&pr, &vec![commit], &projects, &test.jira, &test.config);
+    jira::workflow::submit_for_review("the-repo", &pr, &vec![commit], &projects, &test.jira, &test.config);
 }
 
 #[test]

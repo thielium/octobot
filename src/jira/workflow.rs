@@ -68,6 +68,7 @@ fn get_jira_project(jira_key: &str) -> &str {
 }
 
 pub fn submit_for_review(
+    repo: &str,
     pr: &PullRequest,
     commits: &Vec<Commit>,
     projects: &Vec<String>,
@@ -78,7 +79,7 @@ pub fn submit_for_review(
         // add comment
         if let Err(e) = jira.comment_issue(
             &key,
-            &format!("Review submitted for branch {}: {}", pr.base.ref_name, pr.html_url),
+            &format!("Review submitted for \"{}\" branch {}: {}", repo, pr.base.ref_name, pr.html_url),
         )
         {
             error!("Error commenting on key [{}]: {}", key, e);
