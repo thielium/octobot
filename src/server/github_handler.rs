@@ -404,7 +404,7 @@ impl GithubEventHandler {
                                 self.config.repos().jira_projects(&self.data.repository, &pull_request.base.ref_name);
 
                             jira::workflow::submit_for_review(
-                                &self.data.repository,
+                                &self.data.repository.name,
                                 &pull_request,
                                 &commits,
                                 &jira_projects,
