@@ -112,6 +112,7 @@ pub fn submit_for_review(
 }
 
 pub fn resolve_issue(
+    repo: &str,
     branch: &str,
     version: Option<&str>,
     commits: &Vec<PushCommit>,
@@ -132,8 +133,8 @@ pub fn resolve_issue(
             Some(v) => format!("\nIncluded in version {}", v),
         };
 
-        let fix_msg = format!("Merged into branch {}: {}{}", branch, desc, version_desc);
-        let ref_msg = format!("Referenced by commit merged into branch {}: {}{}", branch, desc, version_desc);
+        let fix_msg = format!("Merged into \"{}\" branch {}: {}{}", repo, branch, desc, version_desc);
+        let ref_msg = format!("Referenced by commit merged into \"{}\" branch {}: {}{}", repo, branch, desc, version_desc);
 
         for key in get_fixed_jira_keys(&vec![commit], projects) {
             if let Err(e) = jira.comment_issue(&key, &fix_msg) {

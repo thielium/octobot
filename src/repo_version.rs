@@ -51,7 +51,7 @@ pub fn comment_repo_version(
     };
 
     // resolve with version
-    jira::workflow::resolve_issue(branch_name, maybe_version, commits, jira_projects, jira, jira_config);
+    jira::workflow::resolve_issue(repo, branch_name, maybe_version, commits, jira_projects, jira, jira_config);
 
     if jira_versions_enabled {
         jira::workflow::add_pending_version(maybe_version, commits, jira_projects, jira);
@@ -244,6 +244,7 @@ impl worker::Runner<RepoVersionRequest> for Runner {
 
                             // resolve the issue with no version
                             jira::workflow::resolve_issue(
+                                &req.repo.name,
                                 &req.branch,
                                 None,
                                 &req.commits,

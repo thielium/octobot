@@ -723,6 +723,7 @@ impl GithubEventHandler {
                                 };
                             if !has_version {
                                 jira::workflow::resolve_issue(
+                                    &self.data.repository.name,
                                     &branch_name,
                                     None,
                                     commits,

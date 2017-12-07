@@ -1399,7 +1399,7 @@ fn test_jira_push_master() {
     test.handler.data.commits = Some(some_jira_push_commits());
 
     if let Some(ref jira) = test.jira {
-        jira.mock_comment_issue("SER-1", "Merged into branch master: [ffeedd0|http://commit/ffeedd00110011]\n{quote}Fix [SER-1] Add the feature{quote}", Ok(()));
+        jira.mock_comment_issue("SER-1", "Merged into \"some-repo\" branch master: [ffeedd0|http://commit/ffeedd00110011]\n{quote}Fix [SER-1] Add the feature{quote}", Ok(()));
 
         jira.mock_get_transitions("SER-1", Ok(vec![new_transition("003", "the-resolved")]));
         jira.mock_transition_issue("SER-1", &new_transition_req("003"), Ok(()));
@@ -1419,7 +1419,7 @@ fn test_jira_push_develop() {
     test.handler.data.commits = Some(some_jira_push_commits());
 
     if let Some(ref jira) = test.jira {
-        jira.mock_comment_issue("SER-1", "Merged into branch develop: [ffeedd0|http://commit/ffeedd00110011]\n{quote}Fix [SER-1] Add the feature{quote}", Ok(()));
+        jira.mock_comment_issue("SER-1", "Merged into \"some-repo\" branch develop: [ffeedd0|http://commit/ffeedd00110011]\n{quote}Fix [SER-1] Add the feature{quote}", Ok(()));
 
         jira.mock_get_transitions("SER-1", Ok(vec![new_transition("003", "the-resolved")]));
         jira.mock_transition_issue("SER-1", &new_transition_req("003"), Ok(()));
@@ -1439,7 +1439,7 @@ fn test_jira_push_release() {
     test.handler.data.commits = Some(some_jira_push_commits());
 
     if let Some(ref jira) = test.jira {
-        jira.mock_comment_issue("SER-1", "Merged into branch release/55: [ffeedd0|http://commit/ffeedd00110011]\n{quote}Fix [SER-1] Add the feature{quote}", Ok(()));
+        jira.mock_comment_issue("SER-1", "Merged into \"some-repo\" branch release/55: [ffeedd0|http://commit/ffeedd00110011]\n{quote}Fix [SER-1] Add the feature{quote}", Ok(()));
 
         jira.mock_get_transitions("SER-1", Ok(vec![new_transition("003", "the-resolved")]));
         jira.mock_transition_issue("SER-1", &new_transition_req("003"), Ok(()));
