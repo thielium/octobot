@@ -1374,7 +1374,7 @@ fn test_jira_pull_request_opened() {
     if let Some(ref jira) = test.jira {
         jira.mock_comment_issue(
             "SER-1",
-            "Review submitted for branch master: http://the-pr",
+            "Review submitted for \"some-repo\" branch master: http://the-pr",
             Ok(()),
         );
 
